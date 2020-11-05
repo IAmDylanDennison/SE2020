@@ -4,7 +4,7 @@ Video Streaming Team Project
 
 Your company is purchasing a streaming video service. The plan is to use the supplied code (and associated data-mining platform) for a future software product. 
 
-Your team has been put in charge of the software. The immediate goal is to bring this codebase up to company development standards by filling in the (mostly missing) unit test cases and performing refactoring. You will not be adding any new features, or change the behavior of the code in any way, only improve the design and implementation quality of the current functionality.
+Your team has been put in charge of the software. The immediate goal is to bring this codebase up to company development standards by creating test cases and performing refactoring. You will not be adding any new features, or change the behavior of the code in any way, only improve the design and implementation quality of the current functionality.
 
 Each team will have a GitHub Classroom repository.  ALL work will be through the project repository via issues, branches, and pull requests. Discussions will take place via the issues tracking system in GitHub
 
@@ -12,7 +12,7 @@ Tasks you need to complete:
 
 * **Create a class diagram of the system**.  Create a class diagram of the system.  Make sure each class is included and the relationships between classes documented.  Store a PDF of the diagram in the repository.  Name it ClassDiagram-Orginal.pdf.
 
-* **Create unit test cases**.  Create an issue in the repository for each set of unit test cases. Then, assign them to a member of the team. Note that before you perform any refactoring on a class, you will need a complete set of test cases.  You will be using the Catch2 unit testing framework.   Documentation and a tutorial are at https://github.com/catchorg/Catch2.   This is already set up in the project.
+* **Create test cases for each system feature**.  Create an issue in the repository for each set of test cases. Then, assign them to a member of the team. Note that before you perform any refactoring on a class, you will need a complete set of test cases.  You will be using the Catch2 unit testing framework.   Documentation and a tutorial are at https://github.com/catchorg/Catch2.   This is already set up in the project.
 
 * **Perform Refactorings** Contribute  refactorings by creating issues in the repository. These issues must give a motivation for why the refactoring is necessary, and include the name of the refactoring.   There will be a list of refactoring to perform.
 
