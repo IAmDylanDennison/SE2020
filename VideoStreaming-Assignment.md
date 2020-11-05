@@ -1,6 +1,7 @@
 
-Video Streaming Team Project
+# Video Streaming Team Project
 
+This is a summary of the assignment.  See the course web page for complete details.
 
 Your company is purchasing a streaming video service. The plan is to use the supplied code (and associated data-mining platform) for a future software product. 
 
