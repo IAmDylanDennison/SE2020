@@ -78,4 +78,25 @@ TEST_CASE( "addStream() w/ multiple stream MOVIE & TVSHOW & ORIGINAL", "[Account
   customer.addStream(stream2);
 
   REQUIRE(customer.data() == "Max,MOVIE,Borat,1,30,1\nMax,TVSHOW,Borat The Show,0,1000,50\nMax,ORIGINAL,Borat 2 Electric Boogaloo,1,0,1\n");
+  
+//Test case stream report
+TEST_CASE( "report() w/ 2 streams", "[Account]"){
+
+  auto episodes= 4;
+  auto video= Video("Wonder Bread the Documentary", Video::ORIGINAL, 0, 20, episodes);
+  auto stream= Stream(video, 1);
+  auto customer= Account("Alva");
+
+  customer.addStream(stream);
+
+  auto episodes2= 0;
+  auto video2= Video("Iron Man", Video::MOVIE, 1, 15, episodes2);
+  auto stream2= Stream(video, 14);
+
+  customer.addStream(stream2);
+
+  customer.report();
+  
+  REQUIRE(stream.viewings() == 1);
+  REQUIRE(stream2.viewings() == 14);
 }
