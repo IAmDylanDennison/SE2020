@@ -66,7 +66,7 @@ TEST_CASE( "Test ctor TV 3", "[Video]" ) {
 
         REQUIRE(test.episodes() == 10);
 
-=======
+
 //Test Cases for setLength
 TEST_CASE( "setLength_TVSHOW", "[Video]"){
  int  hours =1;
@@ -112,8 +112,6 @@ TEST_CASE( "setLength_ORIGINAL", "[Video]"){
   REQUIRE(v.Minutes() == 20);
   REQUIRE(v.type() == type);
 }
-
-=======
 
 TEST_CASE("Empty Original Video", "[Video]")
 {
@@ -185,5 +183,11 @@ TEST_CASE("Original Video with Episodes", "[Video]")
         REQUIRE(video.hours() == numHours);
         REQUIRE(video.Minutes() == numMinutes);
         REQUIRE(video.episodes() == numEpisodes);
+}
+
+TEST_CASE( "Constructor with MOVIE", "[Video]" ){
+  int movie = Video::MOVIE;
+    Video vid("Indiana Jones", movie, 2, 1, 0);
+    REQUIRE(vid.type() == movie);
 }
 
