@@ -78,7 +78,8 @@ TEST_CASE( "addStream() w/ multiple stream MOVIE & TVSHOW & ORIGINAL", "[Account
   customer.addStream(stream2);
 
   REQUIRE(customer.data() == "Max,MOVIE,Borat,1,30,1\nMax,TVSHOW,Borat The Show,0,1000,50\nMax,ORIGINAL,Borat 2 Electric Boogaloo,1,0,1\n");
-  
+}
+
 //Test case stream report
 TEST_CASE( "report() w/ 2 streams", "[Account]"){
 
