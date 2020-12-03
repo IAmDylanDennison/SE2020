@@ -66,6 +66,7 @@ TEST_CASE( "Test ctor TV 3", "[Video]" ) {
 
         REQUIRE(test.episodes() == 10);
 
+}
 
 //Test Cases for setLength
 TEST_CASE( "setLength_TVSHOW", "[Video]"){
