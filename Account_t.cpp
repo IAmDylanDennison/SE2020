@@ -100,4 +100,19 @@ TEST_CASE( "report() w/ 2 streams", "[Account]"){
   
   REQUIRE(stream.viewings() == 1);
   REQUIRE(stream2.viewings() == 14);
+
+}
+
+//Account with no name test case
+TEST_CASE( "addStream() w/ no account name", "[Account]"){
+
+  auto episodes= 12;
+  auto video= Video("Mr. No-Name Returns", Video::TVSHOW, 0,\
+ 45, episodes);
+  auto stream= Stream(video, 40);
+  auto customer= Account("");
+
+  customer.addStream(stream);
+
+  REQUIRE(customer.data() == ",TVSHOW,Mr. No-Name Returns,0,1800,40\n");
 }
