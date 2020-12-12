@@ -93,8 +93,8 @@ std::string Account::report() const {
     // total time
     int time = totalHours + totalMinutes / 60;
     output << "Total Time: " << time << ":";
-    time = totalMinutes % 60;
-    output << time << '\n';
+    int remainderMin = totalMinutes % 60;  //remainderMin is a new var that shows the reminder of mins left when div by a hour
+    output << remainderMin  << '\n';
 
     return output.str();
 }
