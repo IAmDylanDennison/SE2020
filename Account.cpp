@@ -115,23 +115,7 @@ std::string Account::data() const {
         output << name << ',';
 
         // stream type
-        switch (it->video().type()) {
-
-            // movies
-            case Video::MOVIE:
-                output << "MOVIE";
-                break;
-
-            // tv
-            case Video::TVSHOW:
-                output << "TVSHOW";
-                break;
-
-            // original
-            case Video::ORIGINAL:
-                output << "ORIGINAL";
-                break;
-        }       
+        output << it->video().getStreamType();
 
         // stream title
         output << ',' << it->video().title();
