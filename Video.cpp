@@ -4,7 +4,6 @@
 */
 
 #include "Video.hpp"
-#include "Duration.hpp"
 
 // constructor
 Video::Video(const std::string& title, int type,  Duration duration,  int episodes)
@@ -12,33 +11,14 @@ Video::Video(const std::string& title, int type,  Duration duration,  int episod
 { }
 
 // video title
-std::string Video::title() const {
-
-    return videoTitle;
-}
+std::string Video::title() const { return videoTitle; }
 
 // video type
-int Video::type() const {
-
-    return videoType;
-}
-
-// video length in hours
-//int Video::hours() const {
-
-//   return lengthHours;
-//}
-
-// video length in minutes
-//int Video::Minutes() const {
-
-//  return lengthMinutes;
-//}
+int Video::type() const { return videoType; }
 
 // number of episodes
-
-int Video::episodes() const {
-
+int Video::episodes() const
+{
     // special case as movies do not have episodes
     if (videoType == Video::MOVIE)
         return 0;
@@ -46,13 +26,4 @@ int Video::episodes() const {
     return numEpisodes;
 }
 
-// set video length
-//void Video::setLength(int hours, int minutes) {
-
-// this->lengthHours = hours;
-//  this->lengthMinutes = minutes;
-//}
-
-Duration Video::duration(){
-  return videoDuration;
-}
+Duration Video::duration() { return videoDuration; }

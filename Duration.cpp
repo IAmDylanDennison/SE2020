@@ -1,19 +1,19 @@
 #include "Duration.hpp"
-#include <iostream>
 
-Duration::Duration(int hours, int minutes){
-   this->hours = hours;
-   this->minutes = minutes;
-}
-void Duration::setLength(int hours, int minutes){
-  this->hours = hours;
-  this->minutes = minutes;
+Duration::Duration()
+{
+	hours = 0;
+	minutes = 0;
 }
 
-int Duration::Hours(){
-return this->hours;
+Duration::Duration(int h, int m)
+{
+	hours = h;
+	minutes = m;
 }
 
-int Duration::Minutes(){
-  return this->minutes;
-}
+void Duration::setHours(int h) { hours = h; }
+void Duration::setMinutes(int m) { minutes = m; }
+
+int Duration::getHours() const { return hours; }
+int Duration::getMinutes() const { return minutes; }

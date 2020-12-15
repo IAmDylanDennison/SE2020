@@ -7,7 +7,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "Video.hpp"
-#include "Duration.hpp"
 
 /*TEST_CASE( "Test ctor TV 1", "[Video]" ) {
 
@@ -192,12 +191,13 @@ TEST_CASE( "Constructor with MOVIE", "[Video]" ){
     Video vid("Indiana Jones", movie, 2, 1, 0);
     REQUIRE(vid.type() == movie);
 }
-
-
-TEST_CASE( "Constructor with MOVIE", "[Video]" ){
-  int movie = Video::MOVIE;
-  Duration time(0,1);
-  Video vid("Indiana Jones", movie, time, 0);
-  REQUIRE(vid.type() == movie);
-}
 */
+
+TEST_CASE( "Constructor with MOVIE", "[Video]" )
+{
+	int movie = Video::MOVIE;
+	Duration time(0,1);
+	Video vid("Indiana Jones", movie, time, 0);
+	REQUIRE(vid.type() == movie);
+}
+
