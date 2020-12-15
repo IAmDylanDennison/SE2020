@@ -17,3 +17,5 @@ void Duration::setMinutes(int m) { minutes = m; }
 
 int Duration::getHours() const { return hours; }
 int Duration::getMinutes() const { return minutes; }
+
+bool Duration::operator==(const Duration& rhs) const { return hours == rhs.hours && minutes == rhs.minutes; }

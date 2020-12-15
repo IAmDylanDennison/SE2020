@@ -13,6 +13,8 @@ class Duration
 		int getHours() const;
 		int getMinutes() const;
 
+		bool operator==(const Duration&) const;
+
 	private:
 		int hours;
 		int minutes;
