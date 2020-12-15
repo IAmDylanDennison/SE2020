@@ -26,4 +26,5 @@ int Video::episodes() const
     return numEpisodes;
 }
 
-Duration Video::duration() { return videoDuration; }
+Duration Video::getLength() const { return videoDuration; }
+void Video::setLength(const Duration& rhs) { videoDuration = rhs; }

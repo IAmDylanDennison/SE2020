@@ -28,8 +28,9 @@ class Video
 		// number of episodes
 		int episodes() const;
 
-		// set video length
-		Duration duration();
+		// video length
+		Duration getLength() const;
+		void setLength(const Duration&);
 
 	private:
 		std::string videoTitle;
