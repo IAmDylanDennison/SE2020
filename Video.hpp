@@ -37,6 +37,9 @@ public:
     // set video length
     void setLength(int hours, int minutes);
 
+    //gets stream type
+    std::string getStreamType();
+
 private:
     std::string videoTitle;
     int videoType;
