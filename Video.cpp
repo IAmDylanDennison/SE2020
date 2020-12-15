@@ -1,14 +1,14 @@
 /*
   Video.cpp
-
   Definition file for Video class
 */
 
 #include "Video.hpp"
+#include "Duration.hpp"
 
 // constructor
-Video::Video(const std::string& title, int type, int hours, int minutes, int episodes)
-    : videoTitle(title), videoType(type), lengthHours(hours), lengthMinutes(minutes), numEpisodes(episodes)
+Video::Video(const std::string& title, int type,  Duration duration,  int episodes)
+  : videoTitle(title), videoType(type), videoDuration(duration), numEpisodes(episodes)
 { }
 
 // video title
@@ -24,18 +24,19 @@ int Video::type() const {
 }
 
 // video length in hours
-int Video::hours() const {
+//int Video::hours() const {
 
-    return lengthHours;
-}
+//   return lengthHours;
+//}
 
 // video length in minutes
-int Video::Minutes() const {
+//int Video::Minutes() const {
 
-    return lengthMinutes;
-}
+//  return lengthMinutes;
+//}
 
 // number of episodes
+
 int Video::episodes() const {
 
     // special case as movies do not have episodes
@@ -46,8 +47,12 @@ int Video::episodes() const {
 }
 
 // set video length
-void Video::setLength(int hours, int minutes) {
+//void Video::setLength(int hours, int minutes) {
 
-    this->lengthHours = hours;
-    this->lengthMinutes = minutes;
+// this->lengthHours = hours;
+//  this->lengthMinutes = minutes;
+//}
+
+Duration Video::duration(){
+  return videoDuration;
 }

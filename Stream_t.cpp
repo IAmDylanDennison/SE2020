@@ -1,5 +1,5 @@
 /*
-  Stream_t.cpp
+0;136;0c  Stream_t.cpp
 
   Test program for class Stream
 */
@@ -8,7 +8,7 @@
 #include "catch.hpp"
 
 #include "Stream.hpp"
-
+/*
 TEST_CASE( "Stream with TV Show, no Viewings", "[Stream]" )
 {
 	auto title = "Sons of Anarchy";
@@ -251,4 +251,4 @@ TEST_CASE( "Stream with Original, 100 viewings", "[Stream]" )
         // Verify correct number of viewings
         REQUIRE(stream.viewings() == numViewings);
 }
-
+*/

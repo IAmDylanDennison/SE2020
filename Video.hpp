@@ -1,12 +1,12 @@
 /*
   Video.hpp
-
   Include file for Video class
 */
 
 #ifndef VIDEO_H
 #define VIDEO_H
 
+#include "Duration.hpp"
 #include <string>
 
 class Video {
@@ -17,7 +17,7 @@ public:
     static const int ORIGINAL   = 2;
 
     // constructor
-    Video(const std::string& title, int type, int hours, int minutes, int episodes);
+  Video(const std::string& title, int type, Duration duration, int episodes);
 
     // video title
     std::string title() const;
@@ -26,22 +26,20 @@ public:
     int type() const;
 
     // length of video in hours
-    int hours() const;
+    //int hours() const;
 
     // length of video in minutes
-    int Minutes() const;
+  //    int Minutes() const;
 
     // number of episodes
     int episodes() const;
 
     // set video length
-    void setLength(int hours, int minutes);
-
+  Duration duration();
 private:
     std::string videoTitle;
     int videoType;
-    int lengthHours;
-    int lengthMinutes;
+    Duration videoDuration;
     int numEpisodes;
 };
 

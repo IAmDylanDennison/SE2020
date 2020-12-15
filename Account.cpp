@@ -6,6 +6,7 @@
 
 #include "Account.hpp"
 #include "Video.hpp"
+#include "Duration.hpp"
 
 #include <iostream>
 #include <sstream>
