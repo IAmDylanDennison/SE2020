@@ -26,9 +26,6 @@ public:
     // constructor
     Video(const std::string& title, int type, int hours, int minutes, int episodes);
 
-    // video title
-    std::string title() const;
-
 
 		// constructor
 		Video(const std::string& title, int type, Duration duration, int episodes);
