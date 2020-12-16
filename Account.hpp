@@ -31,7 +31,7 @@ public:
     std::string data() const;
 
 private:
-    const std::string account_name;
+    const std::string accountName;
     std::vector<Stream> streams;
 };
 

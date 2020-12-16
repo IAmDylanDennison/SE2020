@@ -15,13 +15,13 @@
 
 // constructor
 Account::Account(const std::string& name)
-    : account_name(name)
+    : accountName(name)
 { }
 
 // account name
 std::string Account::name() const {
 
-    return account_name;
+    return accountName;
 }
 
 // add a stream to this account
@@ -29,7 +29,6 @@ void Account::addStream(const Stream& stream) {
 
     streams.push_back(stream);
 }
-
 // account streaming report
 std::string Account::report() const {
 
@@ -46,7 +45,6 @@ std::string Account::report() const {
     int totalHours = 0;
     int totalMinutes = 0;
     for (std::vector<Stream>::const_iterator it = streams.begin(); it != streams.end(); ++it) {
-
         // stream title
         output << '\t' << it->video().title();
 
@@ -54,10 +52,13 @@ std::string Account::report() const {
         totalHours += it->video().getLength().getHours() * it->viewings();
         totalMinutes += it->video().getLength().getMinutes() * it->viewings();
 
+	
         // stream counts and originals
-        int streamCount = 0;
-        int originals = 0;
-        switch (it->video().type()) {
+	int viewCount= it->viewings();
+        int streamCount = it->video().getNumberOfStreams(viewCount);
+        int originals =it->video().getNumberOfOriginals();
+	
+	/* switch (it->video().type()) {
 
             // for movies, the stream count is the number of hours, with a minimum of 1
             case Video::MOVIE:
@@ -74,8 +75,8 @@ std::string Account::report() const {
                 originals += it->viewings();
                 streamCount += it->viewings();
                 break;
-        }
-
+		}*/
+	
         // stream counts for this video
         std::ostringstream out_str_stream;
         output << '\t' << streamCount << '\n';
@@ -116,23 +117,8 @@ std::string Account::data() const {
         output << name << ',';
 
         // stream type
-        switch (it->video().type()) {
+        output << it->video().getStreamType();
 
-            // movies
-            case Video::MOVIE:
-                output << "MOVIE";
-                break;
-
-            // tv
-            case Video::TVSHOW:
-                output << "TVSHOW";
-                break;
-
-            // original
-            case Video::ORIGINAL:
-                output << "ORIGINAL";
-                break;
-        }
 
         // stream title
         output << ',' << it->video().title();

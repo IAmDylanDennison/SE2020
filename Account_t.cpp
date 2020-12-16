@@ -17,6 +17,9 @@ TEST_CASE( "No streaming", "[Account]" ) {
     REQUIRE(customer.data() == "");
 }
 
+
+
+
 //Test case single stream MOVIE
 TEST_CASE( "addStream() w/ single stream MOVIE", "[Account]"){
 
@@ -56,6 +59,8 @@ TEST_CASE( "addStream() w/ single stream ORIGINAL", "[Account]"){
   REQUIRE(customer.data() == "Alva,ORIGINAL,Wonder Bread the Documentary,0,60,3\n");
 }
 
+
+
 //Test case multiple streams
 TEST_CASE( "addStream() w/ multiple stream MOVIE & TVSHOW & ORIGINAL", "[Account]"){
 
@@ -80,6 +85,7 @@ TEST_CASE( "addStream() w/ multiple stream MOVIE & TVSHOW & ORIGINAL", "[Account
   REQUIRE(customer.data() == "Max,MOVIE,Borat,1,30,1\nMax,TVSHOW,Borat The Show,0,1000,50\nMax,ORIGINAL,Borat 2 Electric Boogaloo,1,0,1\n");
 }
 
+
 //Test case stream report
 TEST_CASE( "report() w/ 2 streams", "[Account]"){
 
@@ -102,6 +108,7 @@ TEST_CASE( "report() w/ 2 streams", "[Account]"){
   REQUIRE(stream2.viewings() == 14);
 
 }
+
 
 //Account with no name test case
 TEST_CASE( "addStream() w/ no account name", "[Account]"){
