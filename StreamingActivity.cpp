@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
 
     // Load videos from data file
     const char* input_filename = "videos.csv";
-    std::vector<Video> videos;
+    std::vector<Video*> videos;
     std::ifstream invideo(input_filename);
     if (!invideo) {
         std::cerr << argv[0] << ": Unable to open input file " << input_filename << '\n';
@@ -31,16 +31,9 @@ int main(int argc, char* argv[]) {
         // video type
         std::string str;
         std::getline(sline, str, ',');
-        int type;
-        if (str == "MOVIE")
-            type = Video::MOVIE;
-        else if (str == "TVSHOW")
-            type = Video::TVSHOW;
-        else if (str == "ORIGINAL")
-            type = Video::ORIGINAL;
-        // ignore any unkown types
-        else
-            continue;
+
+	// For some reason str is emptied before currVideo is created, type resolves this issue
+	std::string type(str);
 
         // video title
         std::string title;
@@ -58,14 +51,29 @@ int main(int argc, char* argv[]) {
         int minutes;
         strminutes >> minutes;
 
+	Duration time(hours, minutes);
+
         // video episodes
         std::getline(sline, str, ',');
         std::stringstream strepisodes(str);
         int episodes;
         strepisodes >> episodes;
 
-        // create our new video for this input line
-        videos.push_back(Video(title, type, hours, minutes, episodes));
+	Video* currVideo;
+
+        if (type == "MOVIE")
+            currVideo = new Movie(title, time, episodes);
+        else if (type == "TVSHOW")
+            currVideo = new TVShow(title, time, episodes);
+        else if (type == "ORIGINAL")
+            currVideo = new Original(title, time, episodes);
+        // ignore any unkown types
+        else
+            continue;
+
+        // push back created video
+        videos.push_back(currVideo);
+
     }
     invideo.close();
 
