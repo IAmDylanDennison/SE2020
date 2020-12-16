@@ -51,8 +51,8 @@ std::string Account::report() const {
         output << '\t' << it->video().title();
 
         // current total hours and minutes
-        totalHours += it->video().hours() * it->viewings();
-        totalMinutes += it->video().Minutes() * it->viewings();
+        totalHours += it->video().getLength().getHours() * it->viewings();
+        totalMinutes += it->video().getLength().getMinutes() * it->viewings();
 
         // stream counts and originals
         int streamCount = 0;
@@ -61,7 +61,7 @@ std::string Account::report() const {
 
             // for movies, the stream count is the number of hours, with a minimum of 1
             case Video::MOVIE:
-                streamCount += it->viewings() * (it->video().hours() ? it->video().hours() : 1);
+                streamCount += it->viewings() * (it->video().getLength().getHours() ? it->video().getLength().getHours() : 1);
                 break;
 
             // for TV shows, the stream count is just the number of streams
@@ -132,14 +132,14 @@ std::string Account::data() const {
             case Video::ORIGINAL:
                 output << "ORIGINAL";
                 break;
-        }       
+        }
 
         // stream title
         output << ',' << it->video().title();
 
         // stream hours and minutes
-        output << ',' << (it->video().hours() * it->viewings());
-        output << ',' << (it->video().Minutes() * it->viewings());
+        output << ',' << (it->video().getLength().getHours() * it->viewings());
+        output << ',' << (it->video().getLength().getMinutes() * it->viewings());
 
         // stream counts
         output << ',';
@@ -147,8 +147,8 @@ std::string Account::data() const {
 
             // for movies, the stream count is the number of hours, with a minimum of 1
             case Video::MOVIE:
-                if (it->video().hours()) {
-                    output << (it->viewings() * it->video().hours());
+                if (it->video().getLength().getHours()) {
+                    output << (it->viewings() * it->video().getLength().getHours());
                 } else {
                     output << it->viewings();
                 }
