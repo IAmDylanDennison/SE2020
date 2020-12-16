@@ -1,5 +1,5 @@
 /*
-  Stream_t.cpp
+0;136;0c  Stream_t.cpp
 
   Test program for class Stream
 */
@@ -13,11 +13,10 @@ TEST_CASE( "Stream with TV Show, no Viewings", "[Stream]" )
 {
 	auto title = "Sons of Anarchy";
 	auto type = Video::TVSHOW;
-	auto numHours = 0;
-	auto numMinutes = 40;
+        Duration time(0,40);
 	auto numEpisodes = 20;
 
-	Video video(title, type, numHours, numMinutes, numEpisodes);
+	Video video(title, type, time, numEpisodes);
 
 	auto numViewings = 0;
 
@@ -28,8 +27,7 @@ TEST_CASE( "Stream with TV Show, no Viewings", "[Stream]" )
 
 	REQUIRE(videoTest.title() == title);
 	REQUIRE(videoTest.type() == type);
-	REQUIRE(videoTest.hours() == numHours);
-	REQUIRE(videoTest.Minutes() == numMinutes);
+	REQUIRE(videoTest.getLength() == time);
 	REQUIRE(videoTest.episodes() == numEpisodes);
 
 	// Verify correct number of viewings
@@ -40,11 +38,10 @@ TEST_CASE( "Stream with TV Show, 1 viewing", "[Stream]" )
 {
         auto title = "Sons of Anarchy";
         auto type = Video::TVSHOW;
-        auto numHours = 0;
-        auto numMinutes = 40;
+	Duration time(0,40);
         auto numEpisodes = 20;
 
-        Video video(title, type, numHours, numMinutes, numEpisodes);
+        Video video(title, type, time, numEpisodes);
 
         auto numViewings = 1;
 
@@ -55,8 +52,7 @@ TEST_CASE( "Stream with TV Show, 1 viewing", "[Stream]" )
 
         REQUIRE(videoTest.title() == title);
         REQUIRE(videoTest.type() == type);
-        REQUIRE(videoTest.hours() == numHours);
-        REQUIRE(videoTest.Minutes() == numMinutes);
+        REQUIRE(videoTest.getLength() == time);
         REQUIRE(videoTest.episodes() == numEpisodes);
 
         // Verify correct number of viewings
@@ -67,11 +63,10 @@ TEST_CASE( "Stream with TV Show, 100 viewings", "[Stream]" )
 {
         auto title = "Sons of Anarchy";
         auto type = Video::TVSHOW;
-        auto numHours = 0;
-        auto numMinutes = 40;
+        Duration time(0,40);
         auto numEpisodes = 20;
 
-        Video video(title, type, numHours, numMinutes, numEpisodes);
+        Video video(title, type, time, numEpisodes);
 
         auto numViewings = 100;
 
@@ -82,8 +77,7 @@ TEST_CASE( "Stream with TV Show, 100 viewings", "[Stream]" )
 
         REQUIRE(videoTest.title() == title);
         REQUIRE(videoTest.type() == type);
-        REQUIRE(videoTest.hours() == numHours);
-        REQUIRE(videoTest.Minutes() == numMinutes);
+	REQUIRE(videoTest.getLength() == time);
         REQUIRE(videoTest.episodes() == numEpisodes);
 
         // Verify correct number of viewings
@@ -94,11 +88,10 @@ TEST_CASE( "Stream with Movie, 0 viewings", "[Stream]" )
 {
         auto title = "Blues Brothers";
         auto type = Video::MOVIE;
-        auto numHours = 2;
-        auto numMinutes = 1;
+        Duration time(2,1);
         auto numEpisodes = 0;
 
-        Video video(title, type, numHours, numMinutes, numEpisodes);
+        Video video(title, type, time, numEpisodes);
 
         auto numViewings = 0;
 
@@ -109,8 +102,7 @@ TEST_CASE( "Stream with Movie, 0 viewings", "[Stream]" )
 
         REQUIRE(videoTest.title() == title);
         REQUIRE(videoTest.type() == type);
-        REQUIRE(videoTest.hours() == numHours);
-        REQUIRE(videoTest.Minutes() == numMinutes);
+        REQUIRE(videoTest.getLength() == time);
         REQUIRE(videoTest.episodes() == numEpisodes);
 
         // Verify correct number of viewings
@@ -121,11 +113,10 @@ TEST_CASE( "Stream with Movie, 1 viewing", "[Stream]" )
 {
         auto title = "Blues Brothers";
         auto type = Video::MOVIE;
-        auto numHours = 2;
-        auto numMinutes = 1;
+        Duration time(2,1);
         auto numEpisodes = 0;
 
-        Video video(title, type, numHours, numMinutes, numEpisodes);
+        Video video(title, type, time, numEpisodes);
 
         auto numViewings = 1;
 
@@ -136,8 +127,7 @@ TEST_CASE( "Stream with Movie, 1 viewing", "[Stream]" )
 
         REQUIRE(videoTest.title() == title);
         REQUIRE(videoTest.type() == type);
-        REQUIRE(videoTest.hours() == numHours);
-        REQUIRE(videoTest.Minutes() == numMinutes);
+        REQUIRE(videoTest.getLength() == time);
         REQUIRE(videoTest.episodes() == numEpisodes);
 
         // Verify correct number of viewings
@@ -148,11 +138,10 @@ TEST_CASE( "Stream with Movie, 100 viewing", "[Stream]" )
 {
         auto title = "Blues Brothers";
         auto type = Video::MOVIE;
-        auto numHours = 2;
-        auto numMinutes = 1;
+       	Duration time(2,1);
         auto numEpisodes = 0;
 
-        Video video(title, type, numHours, numMinutes, numEpisodes);
+        Video video(title, type, time, numEpisodes);
 
         auto numViewings = 100;
 
@@ -163,8 +152,7 @@ TEST_CASE( "Stream with Movie, 100 viewing", "[Stream]" )
 
         REQUIRE(videoTest.title() == title);
         REQUIRE(videoTest.type() == type);
-        REQUIRE(videoTest.hours() == numHours);
-        REQUIRE(videoTest.Minutes() == numMinutes);
+        REQUIRE(videoTest.getLength() == time);
         REQUIRE(videoTest.episodes() == numEpisodes);
 
         // Verify correct number of viewings
@@ -175,11 +163,10 @@ TEST_CASE( "Stream with Original, 0 viewings", "[Stream]" )
 {
         auto title = "Original Documentary on Tomatos";
         auto type = Video::ORIGINAL;
-        auto numHours = 0;
-        auto numMinutes = 30;
+        Duration time(0,30);
         auto numEpisodes = 0;
 
-        Video video(title, type, numHours, numMinutes, numEpisodes);
+        Video video(title, type, time, numEpisodes);
 
         auto numViewings = 0;
 
@@ -190,8 +177,7 @@ TEST_CASE( "Stream with Original, 0 viewings", "[Stream]" )
 
         REQUIRE(videoTest.title() == title);
         REQUIRE(videoTest.type() == type);
-        REQUIRE(videoTest.hours() == numHours);
-        REQUIRE(videoTest.Minutes() == numMinutes);
+        REQUIRE(videoTest.getLength() == time);
         REQUIRE(videoTest.episodes() == numEpisodes);
 
         // Verify correct number of viewings
@@ -202,11 +188,10 @@ TEST_CASE( "Stream with Original, 1 viewing", "[Stream]" )
 {
         auto title = "Original Documentary on Tomatos";
         auto type = Video::ORIGINAL;
-        auto numHours = 0;
-        auto numMinutes = 30;
+        Duration time(0,30);
         auto numEpisodes = 0;
 
-        Video video(title, type, numHours, numMinutes, numEpisodes);
+        Video video(title, type, time, numEpisodes);
 
         auto numViewings = 1;
 
@@ -217,8 +202,7 @@ TEST_CASE( "Stream with Original, 1 viewing", "[Stream]" )
 
         REQUIRE(videoTest.title() == title);
         REQUIRE(videoTest.type() == type);
-        REQUIRE(videoTest.hours() == numHours);
-        REQUIRE(videoTest.Minutes() == numMinutes);
+        REQUIRE(videoTest.getLength() == time);
         REQUIRE(videoTest.episodes() == numEpisodes);
 
         // Verify correct number of viewings
@@ -229,11 +213,10 @@ TEST_CASE( "Stream with Original, 100 viewings", "[Stream]" )
 {
         auto title = "Original Documentary on Tomatos";
         auto type = Video::ORIGINAL;
-        auto numHours = 0;
-        auto numMinutes = 30;
+        Duration time(0,30);
         auto numEpisodes = 0;
 
-        Video video(title, type, numHours, numMinutes, numEpisodes);
+        Video video(title, type, time, numEpisodes);
 
         auto numViewings = 100;
 
@@ -244,8 +227,7 @@ TEST_CASE( "Stream with Original, 100 viewings", "[Stream]" )
 
         REQUIRE(videoTest.title() == title);
         REQUIRE(videoTest.type() == type);
-        REQUIRE(videoTest.hours() == numHours);
-        REQUIRE(videoTest.Minutes() == numMinutes);
+	REQUIRE(videoTest.getLength() == time);
         REQUIRE(videoTest.episodes() == numEpisodes);
 
         // Verify correct number of viewings

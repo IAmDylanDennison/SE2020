@@ -1,39 +1,26 @@
 /*
   Video.cpp
-
   Definition file for Video class
 */
 
 #include "Video.hpp"
 
 // constructor
-Video::Video(const std::string& title, int type, int hours, int minutes, int episodes)
-    : videoTitle(title), videoType(type), lengthHours(hours), lengthMinutes(minutes), numEpisodes(episodes)
+Video::Video(const std::string& title, int type,  Duration duration,  int episodes)
+  : videoTitle(title), videoType(type), videoDuration(duration), numEpisodes(episodes)
 { }
 
 // video title
-std::string Video::title() const {
-
-    return videoTitle;
-}
+std::string Video::title() const { return videoTitle; }
 
 // video type
+
 int Video::type() const {
 
     return videoType;
 }
 
-// video length in hours
-int Video::hours() const {
 
-    return lengthHours;
-}
-
-// video length in minutes
-int Video::Minutes() const {
-
-    return lengthMinutes;
-}
 int Video::getNumberOfStreams(const int viewings){
   int streamCount =0;
   switch (videoType) {
@@ -62,9 +49,10 @@ int Video::getNumberOfOriginals(){
   }
   return originals;
 }
-// number of episodes
-int Video::episodes() const {
 
+// number of episodes
+int Video::episodes() const
+{
     // special case as movies do not have episodes
     if (videoType == Video::MOVIE)
         return 0;
@@ -72,12 +60,10 @@ int Video::episodes() const {
     return numEpisodes;
 }
 
-// set video length
-void Video::setLength(int hours, int minutes) {
 
-    this->lengthHours = hours;
-    this->lengthMinutes = minutes;
-}
+Duration Video::getLength() const { return videoDuration; }
+void Video::setLength(const Duration& rhs) { videoDuration = rhs; }
+
 
 std::string Video::getStreamType() {
 
@@ -103,3 +89,4 @@ std::string Video::getStreamType() {
 
   return ret;
 }
+

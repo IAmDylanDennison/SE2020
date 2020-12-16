@@ -8,6 +8,7 @@
 #define RENTAL_H
 
 #include "Video.hpp"
+#include "Duration.hpp"
 
 class Stream {
 public:

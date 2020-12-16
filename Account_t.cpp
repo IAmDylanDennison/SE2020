@@ -24,7 +24,7 @@ TEST_CASE( "No streaming", "[Account]" ) {
 TEST_CASE( "addStream() w/ single stream MOVIE", "[Account]"){
 
   auto episodes= 0;
-  auto video= Video("Billy Madison", Video::MOVIE, 1, 45, episodes);
+  auto video= Video("Billy Madison", Video::MOVIE, Duration(1, 45), episodes);
   auto stream= Stream(video, 1);
   auto customer= Account("Matt");
 
@@ -37,7 +37,7 @@ TEST_CASE( "addStream() w/ single stream MOVIE", "[Account]"){
 TEST_CASE( "addStream() w/ single stream TVSHOW", "[Account]"){
 
   auto episodes= 12;
-  auto video= Video("America's Next Top Model", Video::TVSHOW, 0, 45, episodes);
+  auto video= Video("America's Next Top Model", Video::TVSHOW, Duration(0, 45), episodes);
   auto stream= Stream(video, 40);
   auto customer= Account("Dylan");
 
@@ -50,7 +50,7 @@ TEST_CASE( "addStream() w/ single stream TVSHOW", "[Account]"){
 TEST_CASE( "addStream() w/ single stream ORIGINAL", "[Account]"){
 
   auto episodes= 4;
-  auto video= Video("Wonder Bread the Documentary", Video::ORIGINAL, 0, 20, episodes);
+  auto video= Video("Wonder Bread the Documentary", Video::ORIGINAL, Duration(0, 20), episodes);
   auto stream= Stream(video, 3);
   auto customer= Account("Alva");
 
@@ -65,15 +65,15 @@ TEST_CASE( "addStream() w/ single stream ORIGINAL", "[Account]"){
 TEST_CASE( "addStream() w/ multiple stream MOVIE & TVSHOW & ORIGINAL", "[Account]"){
 
   auto episodes = 0;
-  auto video = Video("Borat", Video::MOVIE, 1, 30, episodes);
+  auto video = Video("Borat", Video::MOVIE, Duration(1, 30), episodes);
   auto stream = Stream(video, 1);
 
   auto episodes1 = 12;
-  auto video1 = Video("Borat The Show", Video::TVSHOW, 0, 20, episodes1);
+  auto video1 = Video("Borat The Show", Video::TVSHOW, Duration(0, 20), episodes1);
   auto stream1 = Stream(video1, 50);
 
   auto episodes2 = 0;
-  auto video2 = Video("Borat 2 Electric Boogaloo", Video::ORIGINAL, 1, 0, episodes2);
+  auto video2 = Video("Borat 2 Electric Boogaloo", Video::ORIGINAL, Duration(1, 0), episodes2);
   auto stream2 = Stream(video2, 1);
 
   auto customer = Account("Max");
@@ -90,14 +90,14 @@ TEST_CASE( "addStream() w/ multiple stream MOVIE & TVSHOW & ORIGINAL", "[Account
 TEST_CASE( "report() w/ 2 streams", "[Account]"){
 
   auto episodes= 4;
-  auto video= Video("Wonder Bread the Documentary", Video::ORIGINAL, 0, 20, episodes);
+  auto video= Video("Wonder Bread the Documentary", Video::ORIGINAL, Duration(0, 20), episodes);
   auto stream= Stream(video, 1);
   auto customer= Account("Alva");
 
   customer.addStream(stream);
 
   auto episodes2= 0;
-  auto video2= Video("Iron Man", Video::MOVIE, 1, 15, episodes2);
+  auto video2= Video("Iron Man", Video::MOVIE, Duration(1, 15), episodes2);
   auto stream2= Stream(video, 14);
 
   customer.addStream(stream2);
@@ -114,8 +114,7 @@ TEST_CASE( "report() w/ 2 streams", "[Account]"){
 TEST_CASE( "addStream() w/ no account name", "[Account]"){
 
   auto episodes= 12;
-  auto video= Video("Mr. No-Name Returns", Video::TVSHOW, 0,\
- 45, episodes);
+  auto video= Video("Mr. No-Name Returns", Video::TVSHOW, Duration(0, 45), episodes);
   auto stream= Stream(video, 40);
   auto customer= Account("");
 

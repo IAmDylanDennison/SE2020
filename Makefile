@@ -2,7 +2,7 @@
 # StreamingActivity
 #
 
-OBJS=StreamingActivity.o Video.o Stream.o Account.o
+OBJS=StreamingActivity.o Video.o Stream.o Account.o Duration.o
 TOBJS=Video_t.o Stream_t.o Account_t.o
 EXE=StreamingActivity Video_t Stream_t Account_t
 
@@ -20,34 +20,34 @@ run : StreamingActivity
 StreamingActivity : $(OBJS)
 	$(GCC) $^ -o $@
 
-StreamingActivity.o: StreamingActivity.cpp Video.hpp Stream.hpp Account.hpp
+StreamingActivity.o: StreamingActivity.cpp Video.hpp Stream.hpp Account.hpp Duration.hpp
 	$(GCC) $(CFLAGS) -c $<
 
 # Video
-Video.o: Video.cpp Video.hpp
+Video.o: Video.cpp Video.hpp Duration.hpp Duration.cpp
 	$(GCC) $(CFLAGS) -c $<
 
-Video_t : Video_t.o Video.o
+Video_t : Video_t.o Video.o Duration.o
 	$(GCC) $^ -o $@
 
 Video_t.o: Video_t.cpp Video.hpp catch.hpp
 	$(GCC) $(CFLAGS) -c $<
 
 # Stream
-Stream.o: Stream.cpp Stream.hpp Video.hpp
+Stream.o: Stream.cpp Stream.hpp Video.hpp Duration.hpp
 	$(GCC) $(CFLAGS) -c $<
 
-Stream_t : Stream_t.o Stream.o Video.o
+Stream_t : Stream_t.o Stream.o Video.o Duration.o
 	$(GCC) $^ -o $@
 
 Stream_t.o: Stream_t.cpp Stream.hpp catch.hpp
 	$(GCC) $(CFLAGS) -c $<
 
 # Account
-Account.o: Account.cpp Account.hpp Video.hpp Stream.hpp
+Account.o: Account.cpp Account.hpp Video.hpp Stream.hpp Duration.hpp
 	$(GCC) $(CFLAGS) -c $<
 
-Account_t : Account_t.o Account.o Stream.o Video.o
+Account_t : Account_t.o Account.o Stream.o Video.o Duration.o
 	$(GCC) $^ -o $@
 
 Account_t.o: Account_t.cpp Account.hpp catch.hpp

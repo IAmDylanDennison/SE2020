@@ -1,13 +1,21 @@
 /*
   Video.hpp
+
+=======
 0;136;0c
+
   Include file for Video class
 */
 
 #ifndef VIDEO_H
 #define VIDEO_H
 
+#include "Duration.hpp"
 #include <string>
+
+
+
+
 class Video {
 public:
 
@@ -21,34 +29,36 @@ public:
     // video title
     std::string title() const;
 
-    // video type
-    int type() const;
 
-    // length of video in hours
-    int hours() const;
+		// constructor
+		Video(const std::string& title, int type, Duration duration, int episodes);
 
-    // length of video in minutes
-    int Minutes() const;
+		// video title
+		std::string title() const;
 
-    // number of episodes
-    int episodes() const;
+		// video type
+		int type() const;
 
-    // set video length
-    void setLength(int hours, int minutes);
+		// number of episodes
+		int episodes() const;
+
+		// video length
+		Duration getLength() const;
+		void setLength(const Duration&);
 
 
-  int getNumberOfOriginals();
-  int getNumberOfStreams(const int);
+    int getNumberOfOriginals();
+    int getNumberOfStreams(const int);
 
     //gets stream type
     std::string getStreamType();
 
-private:
-    std::string videoTitle;
-    int videoType;
-    int lengthHours;
-    int lengthMinutes;
-    int numEpisodes;
+	private:
+		std::string videoTitle;
+		int videoType;
+		Duration videoDuration;
+		int numEpisodes;
+
 };
 
 #endif
