@@ -14,13 +14,13 @@
 
 // constructor
 Account::Account(const std::string& name)
-    : account_name(name)
+    : accountName(name)
 { }
 
 // account name
 std::string Account::name() const {
 
-    return account_name;
+    return accountName;
 }
 
 // add a stream to this account
@@ -94,8 +94,8 @@ std::string Account::report() const {
     // total time
     int time = totalHours + totalMinutes / 60;
     output << "Total Time: " << time << ":";
-    time = totalMinutes % 60;
-    output << time << '\n';
+    int remainderMin = totalMinutes % 60;  //remainderMin is a new var that shows the reminder of mins left when div by a hour
+    output << remainderMin  << '\n';
 
     return output.str();
 }
@@ -116,23 +116,7 @@ std::string Account::data() const {
         output << name << ',';
 
         // stream type
-        switch (it->video().type()) {
-
-            // movies
-            case Video::MOVIE:
-                output << "MOVIE";
-                break;
-
-            // tv
-            case Video::TVSHOW:
-                output << "TVSHOW";
-                break;
-
-            // original
-            case Video::ORIGINAL:
-                output << "ORIGINAL";
-                break;
-        }       
+        output << it->video().getStreamType();
 
         // stream title
         output << ',' << it->video().title();

@@ -78,3 +78,28 @@ void Video::setLength(int hours, int minutes) {
     this->lengthHours = hours;
     this->lengthMinutes = minutes;
 }
+
+std::string Video::getStreamType() {
+
+ std::string ret;
+
+  switch (type()) {
+
+    // movies
+  case Video::MOVIE:
+    ret = "MOVIE";
+     break;
+
+    // tv
+  case Video::TVSHOW:
+    ret = "TVSHOW";
+     break;
+
+    // original
+  case Video::ORIGINAL:
+    ret = "ORIGINAL";
+      break;
+  }
+
+  return ret;
+}
