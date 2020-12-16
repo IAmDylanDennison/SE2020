@@ -26,7 +26,7 @@ int Video::getNumberOfStreams(const int viewings){
   switch (videoType) {
     // for movies, the stream count is the number of hours, with a minimum of 1
   case Video::MOVIE:
-    streamCount += viewings * (lengthHours ? lengthHours : 1);
+    streamCount += viewings * (videoDuration.getHours() ? videoDuration.getHours() : 1);
     break;
     
     // for TV shows, the stream count is just the number of streams
