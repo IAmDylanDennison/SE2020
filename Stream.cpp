@@ -7,9 +7,7 @@
 #include "Stream.hpp"
 
 // constructor
-Stream::Stream(const Video& video, int viewings)
-    : streamingVideo(video), numViewed(viewings)
-{ }
+Stream::Stream(Video* video, int viewings) : streamingVideo(video), numViewed(viewings) {}
 
 // number of times watched
 int Stream::viewings() const {
@@ -18,7 +16,7 @@ int Stream::viewings() const {
 }
 
 // video rented
-Video Stream::video() const {
+Video* Stream::video() const {
 
     return streamingVideo;
 }

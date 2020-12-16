@@ -14,16 +14,16 @@ class Stream {
 public:
 
     // constructor
-    Stream(const Video& video, int occurrences);
+    Stream(Video* video, int occurrences);
 
     // number of times watched
     int viewings() const;
 
     // video rented
-    Video video() const;
+    Video* video() const;
 
 private:
-    Video streamingVideo;
+    Video* streamingVideo;
     int numViewed;
 };
 
