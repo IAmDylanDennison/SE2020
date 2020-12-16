@@ -46,37 +46,17 @@ std::string Account::report() const {
     int totalMinutes = 0;
     for (std::vector<Stream>::const_iterator it = streams.begin(); it != streams.end(); ++it) {
         // stream title
-        output << '\t' << it->video().title();
+        output << '\t' << it->video()->title();
 
         // current total hours and minutes
-        totalHours += it->video().getLength().getHours() * it->viewings();
-        totalMinutes += it->video().getLength().getMinutes() * it->viewings();
+        totalHours += it->video()->getLength().getHours() * it->viewings();
+        totalMinutes += it->video()->getLength().getMinutes() * it->viewings();
 
-	
         // stream counts and originals
 	int viewCount= it->viewings();
-        int streamCount = it->video().getNumberOfStreams(viewCount);
-        int originals =it->video().getNumberOfOriginals();
-	
-	/* switch (it->video().type()) {
+        int streamCount = it->video()->getNumberOfStreams(viewCount);
+        int originals =it->video()->getNumberOfOriginals();
 
-            // for movies, the stream count is the number of hours, with a minimum of 1
-            case Video::MOVIE:
-                streamCount += it->viewings() * (it->video().getLength().getHours() ? it->video().getLength().getHours() : 1);
-                break;
-
-            // for TV shows, the stream count is just the number of streams
-            case Video::TVSHOW:
-                streamCount += it->viewings();
-                break;
-
-            // for TV shows, the stream count is just the number of streams
-            case Video::ORIGINAL:
-                originals += it->viewings();
-                streamCount += it->viewings();
-                break;
-		}*/
-	
         // stream counts for this video
         std::ostringstream out_str_stream;
         output << '\t' << streamCount << '\n';
@@ -117,34 +97,19 @@ std::string Account::data() const {
         output << name << ',';
 
         // stream type
-        output << it->video().getStreamType();
+        output << it->video()->getStreamType();
 
 
         // stream title
-        output << ',' << it->video().title();
+        output << ',' << it->video()->title();
 
         // stream hours and minutes
-        output << ',' << (it->video().getLength().getHours() * it->viewings());
-        output << ',' << (it->video().getLength().getMinutes() * it->viewings());
+        output << ',' << (it->video()->getLength().getHours() * it->viewings());
+        output << ',' << (it->video()->getLength().getMinutes() * it->viewings());
 
         // stream counts
         output << ',';
-        switch (it->video().type()) {
-
-            // for movies, the stream count is the number of hours, with a minimum of 1
-            case Video::MOVIE:
-                if (it->video().getLength().getHours()) {
-                    output << (it->viewings() * it->video().getLength().getHours());
-                } else {
-                    output << it->viewings();
-                }
-                break;
-
-            // all others are just the number of occurrences
-            default:
-                output << it->viewings();
-                break;
-        }
+	output << it->video()->getNumberOfStreams(it->viewings());
 
         output << '\n';
     }
