@@ -34,7 +34,34 @@ int Video::Minutes() const {
 
     return lengthMinutes;
 }
-
+int Video::getNumberOfStreams(const int viewings){
+  int streamCount =0;
+  switch (videoType) {
+    // for movies, the stream count is the number of hours, with a minimum of 1
+  case Video::MOVIE:
+    streamCount += viewings * (lengthHours ? lengthHours : 1);
+    break;
+    
+    // for TV shows, the stream count is just the number of streams
+  case Video::TVSHOW:
+    streamCount += viewings;
+    break;
+    
+    // for TV shows, the stream count is just the number of streams
+  case Video::ORIGINAL:
+    streamCount += viewings;
+    break;
+  }
+ return streamCount;
+}
+int Video::getNumberOfOriginals(){
+  int originals =0;
+  if(videoType == Video::ORIGINAL) {
+    originals=1;
+    return originals;
+  }
+  return originals;
+}
 // number of episodes
 int Video::episodes() const {
 

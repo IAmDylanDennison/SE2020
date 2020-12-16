@@ -1,6 +1,6 @@
 /*
   Video.hpp
-
+0;136;0c
   Include file for Video class
 */
 
@@ -8,7 +8,6 @@
 #define VIDEO_H
 
 #include <string>
-
 class Video {
 public:
 
@@ -36,6 +35,10 @@ public:
 
     // set video length
     void setLength(int hours, int minutes);
+
+
+  int getNumberOfOriginals();
+  int getNumberOfStreams(const int);
 
     //gets stream type
     std::string getStreamType();

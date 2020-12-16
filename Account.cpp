@@ -28,7 +28,6 @@ void Account::addStream(const Stream& stream) {
 
     streams.push_back(stream);
 }
-
 // account streaming report
 std::string Account::report() const {
 
@@ -45,7 +44,6 @@ std::string Account::report() const {
     int totalHours = 0;
     int totalMinutes = 0;
     for (std::vector<Stream>::const_iterator it = streams.begin(); it != streams.end(); ++it) {
-
         // stream title
         output << '\t' << it->video().title();
 
@@ -53,10 +51,13 @@ std::string Account::report() const {
         totalHours += it->video().hours() * it->viewings();
         totalMinutes += it->video().Minutes() * it->viewings();
 
+	
         // stream counts and originals
-        int streamCount = 0;
-        int originals = 0;
-        switch (it->video().type()) {
+	int viewCount= it->viewings();
+        int streamCount = it->video().getNumberOfStreams(viewCount);
+        int originals =it->video().getNumberOfOriginals();
+	
+	/* switch (it->video().type()) {
 
             // for movies, the stream count is the number of hours, with a minimum of 1
             case Video::MOVIE:
@@ -73,8 +74,8 @@ std::string Account::report() const {
                 originals += it->viewings();
                 streamCount += it->viewings();
                 break;
-        }
-
+		}*/
+	
         // stream counts for this video
         std::ostringstream out_str_stream;
         output << '\t' << streamCount << '\n';
