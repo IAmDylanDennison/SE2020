@@ -13,49 +13,65 @@
 #include "Duration.hpp"
 #include <string>
 
+class Video
+{
 
-
-
-class Video {
-public:
-
-    static const int MOVIE      = 0;
-    static const int TVSHOW     = 1;
-    static const int ORIGINAL   = 2;
-
-    // constructor
-    Video(const std::string& title, int type, int hours, int minutes, int episodes);
-
-
+	public:
 		// constructor
-		Video(const std::string& title, int type, Duration duration, int episodes);
+		Video(const std::string& title, const Duration& duration, int episodes);
 
 		// video title
 		std::string title() const;
 
-		// video type
-		int type() const;
-
 		// number of episodes
-		int episodes() const;
+		virtual int episodes() const;
 
 		// video length
 		Duration getLength() const;
 		void setLength(const Duration&);
 
+		virtual int getNumberOfOriginals() const = 0;
+		virtual int getNumberOfStreams(const int) const = 0;
 
-    int getNumberOfOriginals();
-    int getNumberOfStreams(const int);
-
-    //gets stream type
-    std::string getStreamType();
+		//gets stream type
+		virtual std::string getStreamType() const = 0;
 
 	private:
 		std::string videoTitle;
-		int videoType;
 		Duration videoDuration;
 		int numEpisodes;
+};
 
+class Movie : public Video
+{
+	public:
+		Movie(const std::string& title, const Duration& length, int numEpisodes) : Video(title, length, numEpisodes) {};
+
+		virtual int episodes() const override;
+
+		virtual int getNumberOfOriginals() const override;
+		virtual int getNumberOfStreams(const int) const override;
+		virtual std::string getStreamType() const override;
+};
+
+class TVShow : public Video
+{
+	public:
+		TVShow(const std::string& title, const Duration& length, int numEpisodes) : Video(title, length, numEpisodes) {};
+
+                virtual int getNumberOfOriginals() const override;
+                virtual int getNumberOfStreams(const int) const override;
+                virtual std::string getStreamType() const override;
+};
+
+class Original : public Video
+{
+	public:
+		Original(const std::string& title, const Duration& length, int numEpisodes) : Video(title, length, numEpisodes) {};
+
+                virtual int getNumberOfOriginals() const override;
+                virtual int getNumberOfStreams(const int) const override;
+                virtual std::string getStreamType() const override;
 };
 
 #endif
