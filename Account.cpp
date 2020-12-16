@@ -14,13 +14,13 @@
 
 // constructor
 Account::Account(const std::string& name)
-    : account_name(name)
+    : accountName(name)
 { }
 
 // account name
 std::string Account::name() const {
 
-    return account_name;
+    return accountName;
 }
 
 // add a stream to this account
