@@ -146,5 +146,11 @@ TEST_CASE("Original Video with Episodes", "[Video]")
 TEST_CASE( "Constructor with MOVIE", "[Video]" )
 {
 	Movie vid("Indiana Jones", Duration(2, 1), 0);
+        Duration duration(2,1);
+
+        REQUIRE(vid.getStreamType() == "MOVIE");
+        REQUIRE(vid.title() == "Indiana Jones");
+        REQUIRE(vid.getLength() == duration);
+
 }
 
