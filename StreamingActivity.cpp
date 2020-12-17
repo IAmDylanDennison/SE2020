@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
         int episodes;
         strepisodes >> episodes;
 
-	Video* currVideo;
+	Video* currVideo=nullptr;
 
         if (type == "MOVIE")
             currVideo = new Movie(title, time, episodes);
@@ -68,9 +68,11 @@ int main(int argc, char* argv[]) {
         else if (type == "ORIGINAL")
             currVideo = new Original(title, time, episodes);
         // ignore any unkown types
-        else
+        else{
+	  delete currVideo;
             continue;
-
+	}
+	
         // push back created video
         videos.push_back(currVideo);
 
